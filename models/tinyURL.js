@@ -4,23 +4,29 @@ const mongoose =require('mongoose');
 const TinyURL= mongoose.model('tinyurls', new mongoose.Schema({
     shortcode: {
         type: String,
-        required: true
+        required: true,
+        index: true,
+        unique: true
     },
     url: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     startDate:{
         type: Date,
-        default: new Date()
+        default: new Date(),
+        index: true
     },
     lastSeenDate:{
         type: Date,
-        default: null
+        default: null,
+        index: true
     },
     redirectCount:{
         type: Number,
-        default: 0
+        default: 0,
+        index: true
     }
 }))
 
