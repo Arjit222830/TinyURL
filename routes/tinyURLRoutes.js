@@ -34,8 +34,7 @@ router.get('/:shortcode',async(req,res)=>{
         if(!tinyURL)
             return res.status(404).send({ERROR:'Shortcode does not found in the system'});
         
-        console.log(tinyURL);
-        return res.status(302).redirect(`${tinyURL.shortcode}`);
+        return res.status(302).set('Locate',tinyURL.shortcode).send(`Location:${tinyURL.url}`);
 
     } catch(err){
         return res.status(404).send({ERROR:'Error while saving'});
