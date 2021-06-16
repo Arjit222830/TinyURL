@@ -1,5 +1,6 @@
 const mongoose =require('mongoose');
 
+/*Schema*/
 const TinyURL= mongoose.model('tinyurls', new mongoose.Schema({
     shortcode: {
         type: String,

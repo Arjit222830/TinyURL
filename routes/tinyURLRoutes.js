@@ -3,6 +3,7 @@ const router= express.Router();
 const shortid = require('shortid');
 const {TinyURL} = require('../models/TinyURL');
 
+// get all tinyURLs
 router.get('/',async(req,res)=>{
     const tinyURLs= await TinyURL.find();
     res.status(200).send(tinyURLs);
@@ -19,7 +20,7 @@ router.get('/:shortcode/stats',async(req,res)=>{
     return res.status(200).send(tinyURL);
 });
 
-//Update uri from shortcode
+//Update uri from tinyURL
 router.get('/:shortcode',async(req,res)=>{
 
     try {
@@ -41,6 +42,7 @@ router.get('/:shortcode',async(req,res)=>{
     }
 });
 
+//Adding a shorten URI
 router.post('/shorten',async(req,res)=>{
 
     var {shortcode,url}= req.body;
@@ -78,8 +80,6 @@ router.post('/shorten',async(req,res)=>{
     await tinyURL.save();
 
     res.send(tinyURL);
-
-
 })
 
 module.exports= router;
